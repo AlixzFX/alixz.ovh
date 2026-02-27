@@ -1,12 +1,12 @@
 "use client"
 
-import { Bar, BarChart, LabelList, XAxis, YAxis, Cell } from "recharts"
-import { cn } from "@/lib/utils"
+import { Bar, BarChart, LabelList, XAxis, YAxis, Cell } from "recharts";
+import { cn } from "@/lib/utils";
 
 import {
   ChartContainer,
   type ChartConfig,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const COLORS = [
   "#4ade80",

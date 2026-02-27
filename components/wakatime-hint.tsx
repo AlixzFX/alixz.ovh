@@ -12,7 +12,7 @@ export function WakatimeHint() {
           <CircleHelp size={24} />
         </button>
       </HoverCardTrigger>
-      <HoverCardContent className="w-[560px] p-0 mt-2 border-none shadow-none" side="bottom" align="center">
+      <HoverCardContent className="w-[560px] p-0 mb-2 border-none shadow-none" side="top" align="center">
         <CodeEditor
           value={`const response = await fetch(\n  "https://wakatime.com/api/v1/users/alixz/stats/last_30_days"\n);\nconst res = await response.json();\nconst data = res.data.languages.slice(0, 5);`}
           language="ts"

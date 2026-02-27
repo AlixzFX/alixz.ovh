@@ -1,7 +1,7 @@
-import * as React from 'react'
-import CodeEditorPrimitive from '@uiw/react-textarea-code-editor'
+import * as React from "react";
+import CodeEditorPrimitive from "@uiw/react-textarea-code-editor";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 function CodeEditor({
   className,

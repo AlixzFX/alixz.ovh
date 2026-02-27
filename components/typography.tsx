@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 // https://ui.shadcn.com/docs/components/radix/typography.md
 
@@ -16,7 +16,7 @@ export function H1({ className, children, ...props }: React.HTMLAttributes<HTMLH
 export function H2({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h2
-      className={cn("scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0", className)}
+      className={cn("scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0", className)}
       {...props}
     >
       {children}
