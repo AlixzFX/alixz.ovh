@@ -13,27 +13,34 @@ export default function Page() {
   return <>
     <H1>alixz.ovh</H1>
 
-    <P>Editing and programming are what makes my kokoro go dokidoki :-)</P>
+    <P>editing and programming are what makes my kokoro go dokidoki :D</P>
     <div className="inline-flex gap-4 mt-4">
       <Link target="_blank" href="https://gitea.alixz.ovh/alixz">
         <Button variant="outline" className="w-full">alixz <Github /></Button>
       </Link>
     </div>
 
-    <H2 className="mt-6">Projects</H2>
+    <H2 className="mt-4">projects</H2>
     <Card className="relative mx-auto w-full pt-0 mt-3">
-      <Image
-        src="/uwu2x.jpg"
-        alt="uwu2x cover"
-        className="relative w-full object-cover h-64"
-        width={1920} height={1080}
-      />
+      <div className="relative">
+        <Image
+          src="/uwu2x.jpg"
+          alt="uwu2x cover"
+          className="relative w-full object-cover h-64"
+          width={1920} height={1080}
+        />
+        <div className="absolute top-4 right-2 rotate-12">
+          <div className="px-2 py-2 rounded-md border-2 border-destructive bg-red-200 dark:bg-red-900 text-destructive">
+            <span className="text-xs font-black whitespace-pre-line text-center block tracking-wide">
+              {"7,000 monthly\nactive users"}
+            </span>
+          </div>
+        </div>
+      </div>
       <CardHeader className="gap-2">
         <CardTitle>uwu2x</CardTitle>
         <CardDescription>
-          An After Effects extension that improves the quality and the smoothness of clips, similar to what Topaz and Flowframes do, but in one click !
-          <br />
-          Used by 7000 people every month, and seen +300,000 times on Youtube.
+          a video processing tool integrated into Adobe After Effects that enhances clip quality and smoothness using AI.
           <br />
           <div className="inline-flex gap-4 mt-3">
             <Link target="_blank" href="https://www.youtube.com/watch?v=lmhZMG4wl-M">
@@ -47,8 +54,8 @@ export default function Page() {
       </CardHeader>
     </Card>
 
-    <H2 className="mt-6">
-      Monthly coding stats{" "}
+    <H2 className="mt-4">
+      monthly coding stats{" "}
       <span className="inline-flex align-middle mb-0.5">
         <WakatimeHint />
       </span>
