@@ -1,0 +1,15 @@
+services:
+  nextjs-alixz:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        container_name: nextjs-alixz
+    env_file: .env
+    restart: unless-stopped
+    networks:
+      - interservices
+
+networks:
+  interservices:
+    external: true
