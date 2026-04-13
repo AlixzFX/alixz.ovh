@@ -1,20 +1,10 @@
 "use client"
 
-import { Bar, BarChart, LabelList, XAxis, YAxis, Cell } from "recharts";
-import { cn } from "@/lib/utils";
+import { Bar, BarChart, LabelList, XAxis, YAxis, Cell } from "recharts"
+import { cn } from "@/lib/utils"
+import { ChartContainer, type ChartConfig } from "@/components/ui/chart"
 
-import {
-  ChartContainer,
-  type ChartConfig,
-} from "@/components/ui/chart";
-
-const COLORS = [
-  "#4ade80",
-  "#60a5fa",
-  "#f87171",
-  "#fb923c",
-  "#c084fc",
-]
+const COLORS = ["#4ade80", "#60a5fa", "#f87171", "#fb923c", "#c084fc"]
 
 const chartConfig = {
   total_seconds: {
@@ -33,8 +23,9 @@ interface MyBarChartProps {
   className?: string
 }
 
-interface MyBarChartSkeletonProps {
+interface MyBarChartStateProps {
   className?: string
+  bars?: number
 }
 
 export function MyBarChart({ data, className }: MyBarChartProps) {
@@ -83,14 +74,11 @@ export function MyBarChart({ data, className }: MyBarChartProps) {
   )
 }
 
-export function MyBarChartSkeleton({ className }: MyBarChartSkeletonProps) {
-  const fakeData = [
-    { language: "a", total_seconds: 102000 },
-    { language: "b", total_seconds: 59000 },
-    { language: "c", total_seconds: 41000 },
-    { language: "d", total_seconds: 28000 },
-    { language: "e", total_seconds: 17000 },
-  ]
+export function MyBarChartSkeleton({ className, bars = 5 }: MyBarChartStateProps) {
+  const fakeData = Array.from({ length: bars }).map((_, i) => ({
+    language: String.fromCharCode(97 + i),
+    total_seconds: 100000 - i * 15000,
+  }))
 
   return (
     <ChartContainer
@@ -98,61 +86,28 @@ export function MyBarChartSkeleton({ className }: MyBarChartSkeletonProps) {
       className={cn("w-full overflow-visible animate-pulse", className)}
       style={{ height: fakeData.length * 28 }}
     >
-      <BarChart
-        data={fakeData}
-        layout="vertical"
-        margin={{ right: 0, left: 0, top: 0, bottom: 0 }}
-        barSize={20}
-        barCategoryGap="10%"
-      >
+      <BarChart data={fakeData} layout="vertical" margin={{ right: 0, left: 0, top: 0, bottom: 0 }} barSize={20}>
         <YAxis dataKey="language" type="category" hide />
         <XAxis dataKey="total_seconds" type="number" hide />
-        <Bar
-          dataKey="total_seconds"
-          layout="vertical"
-          fill="#6b7280"
-          radius={4}
-          opacity={0.3}
-          isAnimationActive={false}
-        />
+        <Bar dataKey="total_seconds" layout="vertical" fill="#6b7280" radius={4} opacity={0.3} isAnimationActive={false} />
       </BarChart>
     </ChartContainer>
   )
 }
 
-export function MyBarChartError({ className }: MyBarChartSkeletonProps) {
-  const fakeData = [
-    { language: "a", total_seconds: 102000 },
-    { language: "b", total_seconds: 59000 },
-    { language: "c", total_seconds: 41000 },
-    { language: "d", total_seconds: 28000 },
-    { language: "e", total_seconds: 17000 },
-  ]
+export function MyBarChartError({ className, bars = 5 }: MyBarChartStateProps) {
+  const fakeData = Array.from({ length: bars }).map((_, i) => ({
+    language: String.fromCharCode(97 + i),
+    total_seconds: 100000 - i * 15000,
+  }))
 
   return (
     <div className={cn("relative w-full overflow-hidden", className)} style={{ height: fakeData.length * 28 }}>
-      <ChartContainer
-        config={chartConfig}
-        className="w-full overflow-visible"
-        style={{ height: fakeData.length * 28 }}
-      >
-        <BarChart
-          data={fakeData}
-          layout="vertical"
-          margin={{ right: 0, left: 0, top: 0, bottom: 0 }}
-          barSize={20}
-          barCategoryGap="10%"
-        >
+      <ChartContainer config={chartConfig} className="w-full overflow-visible" style={{ height: fakeData.length * 28 }}>
+        <BarChart data={fakeData} layout="vertical" margin={{ right: 0, left: 0, top: 0, bottom: 0 }} barSize={20}>
           <YAxis dataKey="language" type="category" hide />
           <XAxis dataKey="total_seconds" type="number" hide />
-          <Bar
-            dataKey="total_seconds"
-            layout="vertical"
-            fill="#7f1d1d"
-            radius={4}
-            opacity={0.6}
-            isAnimationActive={false}
-          />
+          <Bar dataKey="total_seconds" layout="vertical" fill="#7f1d1d" radius={4} opacity={0.6} isAnimationActive={false} />
         </BarChart>
       </ChartContainer>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
